@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Aquapalaca
 {
@@ -15,6 +17,65 @@ namespace Aquapalaca
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void btnInloggen_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            MaakRondeHoeken(pictureBox1, 20);
+            RondButton(btnInloggen, 20);
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MaakRondeHoeken(PictureBox pb, int radius)
+        {
+            GraphicsPath pad = new GraphicsPath();
+            Rectangle rect = new Rectangle(0, 0, pb.Width, pb.Height);
+
+            int diameter = radius * 2;
+
+            // Boven-links
+            pad.AddArc(rect.X, rect.Y, diameter, diameter, 180, 90);
+            // Boven-rechts
+            pad.AddArc(rect.Right - diameter, rect.Y, diameter, diameter, 270, 90);
+            // Onder-rechts
+            pad.AddArc(rect.Right - diameter, rect.Bottom - diameter, diameter, diameter, 0, 90);
+            // Onder-links
+            pad.AddArc(rect.X, rect.Bottom - diameter, diameter, diameter, 90, 90);
+
+            pad.CloseFigure();
+
+            pb.Region = new Region(pad);
+        }
+
+        private void RondButton(Button btn, int radius)
+        {
+            GraphicsPath path = new GraphicsPath();
+            Rectangle rect = new Rectangle(0, 0, btn.Width, btn.Height);
+            int diameter = radius * 2;
+
+            path.AddArc(rect.X, rect.Y, diameter, diameter, 180, 90);
+            path.AddArc(rect.Right - diameter, rect.Y, diameter, diameter, 270, 90);
+            path.AddArc(rect.Right - diameter, rect.Bottom - diameter, diameter, diameter, 0, 90);
+            path.AddArc(rect.X, rect.Bottom - diameter, diameter, diameter, 90, 90);
+            path.CloseFigure();
+
+            btn.Region = new Region(path);
+
+            
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

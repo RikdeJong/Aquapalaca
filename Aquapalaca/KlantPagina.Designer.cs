@@ -28,12 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.lblNaam = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // lblNaam
+            // 
+            this.lblNaam.AutoSize = true;
+            this.lblNaam.Location = new System.Drawing.Point(574, 102);
+            this.lblNaam.Name = "lblNaam";
+            this.lblNaam.Size = new System.Drawing.Size(44, 16);
+            this.lblNaam.TabIndex = 0;
+            this.lblNaam.Text = "label1";
+            this.lblNaam.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // KlantPagina
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblNaam);
+            this.Name = "KlantPagina";
             this.Text = "KlantPagina";
+            this.Load += new System.EventHandler(this.KlantPagina_Load);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Label lblNaam;
     }
 }

@@ -14,14 +14,20 @@ namespace Aquapalaca
 {
     public partial class Form1 : Form
     {
+        public static Inloggen Instance;
+        public string tb1;
+        string voornaam = "";
+        string achternaam = "";
         public Form1()
         {
             InitializeComponent();
+
         }
 
         private void btnInloggen_Click(object sender, EventArgs e)
         {
-
+            string gebruikersnaam = txtGebruikersnaam.Text;
+            string wachtwoord = txtWachtwoord.Text;
         }
 
         private void Form1_Load(object sender, EventArgs e)

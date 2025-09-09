@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Management.Instrumentation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,9 +13,24 @@ namespace Aquapalaca
 {
     public partial class KlantPagina : Form
     {
+        public static Form1 instance;
+        public Label lab1;
         public KlantPagina()
         {
             InitializeComponent();
+            instance = this;
+            lab1 = lblNaam;
+            this.Size = new Size(800, 400);
+        }
+
+        private void KlantPagina_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

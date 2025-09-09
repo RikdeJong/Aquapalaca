@@ -13,7 +13,7 @@ namespace Aquapalaca
 {
     public partial class KlantPagina : Form
     {
-        public static Form1 instance;
+        public static KlantPagina instance;
         public Label lab1;
         public KlantPagina()
         {
@@ -31,6 +31,13 @@ namespace Aquapalaca
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnUitloggen_Click(object sender, EventArgs e)
+        {
+            Form1 form1 = new Form1();
+            form1.Show();
+            this.Hide();
         }
     }
 }

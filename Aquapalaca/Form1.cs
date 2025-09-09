@@ -14,13 +14,14 @@ namespace Aquapalaca
 {
     public partial class Form1 : Form
     {
-        public static Inloggen Instance;
+        public static Form1 Instance;
         public string tb1;
         string voornaam = "";
         string achternaam = "";
         public Form1()
         {
             InitializeComponent();
+            Instance = this;
 
         }
 
@@ -28,6 +29,23 @@ namespace Aquapalaca
         {
             string gebruikersnaam = txtGebruikersnaam.Text;
             string wachtwoord = txtWachtwoord.Text;
+
+
+            Gebruiker gebruikersobject = Gebruiker.getLoginGebruiker(gebruikersnaam, wachtwoord);
+            if (gebruikersobject != null)
+            {
+                voornaam = gebruikersobject.Voornaam;
+                achternaam = gebruikersobject.Achternaam;
+                this.Close();
+                KlantPagina klantPagina = new KlantPagina();
+                KlantPagina.instance.lab1.Text = "Welkom " + voornaam + " " + achternaam + "!";
+                klantPagina.Show();
+            }
+            else
+            {
+                MessageBox.Show("Ongeldige login");
+            }
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
